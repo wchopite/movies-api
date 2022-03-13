@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movies-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: movies-api
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        service: movies-api
+    spec:
+      containers:
+        - name: movies-api
+          image: '' # Docker Image URL from Container Registry
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: movies-api-configmap
+            - secretRef:
+                name: movies-api-secret
+          resources:
+            requests:
+              memory: "150Mi"
+              cpu: "100m"
+            limits:
+              memory: "250Mi"
+              cpu: "300m"

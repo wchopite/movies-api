@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "4306deba-a8f4-4a54-8bae-ad7f2652f426",
+		"name": "MovieDB Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/movies",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movie by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/movies/7",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enable Movie",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/movies/7/enable",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies",
+						"7",
+						"enable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Disable Movie",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/movies/7/disable",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies",
+						"7",
+						"disable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Movie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"The Matrix\",\n    \"description\": \"SciFi movie\",\n    \"duration\": 122,\n    \"year\": 1999\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/movies",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make a Review",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"movie_id\": 1,\n    \"user_id\": 1,\n    \"description\": \"The movie is great!!!\",\n    \"value\": 9    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/movies/7/review",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies",
+						"7",
+						"review"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

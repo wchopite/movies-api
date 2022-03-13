@@ -1,0 +1,61 @@
+# Only with development purpose
+version: "3"
+
+networks:
+  movies-api:
+    driver: bridge
+
+volumes:
+  mysql:
+
+services:
+  ##### Databases ##########
+  mysql-db:
+    image: mysql:8.0.28
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: 'movies-db'
+      MYSQL_USER: 'movies-db-user'
+      MYSQL_PASSWORD: 'movies-password'
+      MYSQL_ROOT_PASSWORD: 'root-password'
+    ports:
+      - '3306:3306'
+    volumes:      
+      - mysql:/var/lib/mysql
+    networks:
+      - movies-api
+
+  # redis-db:
+  #   image: redis:alpine
+  #   restart: unless-stopped
+  #   ports:
+  #     - 6379:6379
+  #   volumes:
+  #     - redisdb:/data/redisdb
+  #   networks:
+  #     - zetl-network
+
+  # zetl-nginx:
+  #   image: nginx
+  #   restart: always
+  #   ports:
+  #     - 8080:80
+  #   volumes:
+  #     - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+  #   networks:
+  #     - zetl-network
+
+  ##### Backends ##########
+  # movies-api:
+  #   ports:
+  #     - 30040:30040
+  #     - 30041:9229
+  #   volumes:
+  #     - ../zetl-api:/app
+  #     - /app/node_modules
+  #   build:
+  #     context: ../zetl-api
+  #     dockerfile: ../zetl-compose/dockerfile
+  #   networks:
+  #     - zetl-network
+  #   restart: unless-stopped  

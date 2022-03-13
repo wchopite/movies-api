@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: movies-api-configmap
+data:
+  NODE_ENV: 'production'
+  PORT: '3000'  
+  EXPRESS_LOGGER: 'true'
+  # DB_HOST:                        # via secret
+  # DB_PORT:                        # via secret
+  # DB_NAME:                        # via secret
+  # DB_USERNAME:                    # via secret
+  # DB_PASSWORD:                    # via secret
+  
